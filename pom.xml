@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>be.aca</groupId>
-		<artifactId>aca-parent</artifactId>
-		<version>1.0.2.GA</version>
-		<relativePath/>
-	</parent>
+
 	<artifactId>osgi-subsystem-support</artifactId>
+	<groupId>be.aca</groupId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
@@ -15,6 +11,10 @@
 	<description>OSGi subsystem support</description>
 
 	<modules>
+		<module>service</module>
+		<module>service-subsystem</module>
+		<module>service-user</module>
+		<module>service-user-subsystem</module>
 		<module>runner</module>
 	</modules>
 
@@ -28,47 +28,34 @@
 		<version.log4j>1.2.17</version.log4j>
 		<version.commons.logging>1.1.1</version.commons.logging>
 		<version.org.apache.felix.configadmin>1.6.0</version.org.apache.felix.configadmin>
-		<version.org.ops4j.pax.web>2.1.2</version.org.ops4j.pax.web>
-		<version.org.apache.felix.webconsole>4.2.0</version.org.apache.felix.webconsole>
-		<version.org.apache.sling.installer.core>3.6.2</version.org.apache.sling.installer.core>
-		<version.org.apache.sling.installer.api>1.0.0</version.org.apache.sling.installer.api>
-		<version.org.apache.sling.installer.provider.file>1.0.4</version.org.apache.sling.installer.provider.file>
-		<version.org.apache.sling.installer.factory.subsystems>1.0.0</version.org.apache.sling.installer.factory.subsystems>
-		<version.org.apache.sling.installer.it>3.1.2</version.org.apache.sling.installer.it>
-		<version.org.apache.sling.installer.console>1.0.0</version.org.apache.sling.installer.console>
-		<version.commons-fileupload>1.2.1</version.commons-fileupload>
-		<version.commons-io>1.4</version.commons-io>
-		<version.org.json.com.springsource.org.json>1.0.0</version.org.json.com.springsource.org.json>
-		<version.org.apache.felix.scr>1.6.2</version.org.apache.felix.scr>
-		<version.org.apache.felix.metatype>1.0.4</version.org.apache.felix.metatype>
+
+		<version.maven.bundle.plugin>2.3.7</version.maven.bundle.plugin>
+		<version.org.osgi.core>5.0.0</version.org.osgi.core>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.apache.sling</groupId>
-				<artifactId>org.apache.sling.installer.core</artifactId>
-				<version>${version.org.apache.sling.installer.core}</version>
+				<groupId>be.aca</groupId>
+				<artifactId>service</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.apache.sling</groupId>
-				<artifactId>org.apache.sling.installer.api</artifactId>
-				<version>${version.org.apache.sling.installer.api}</version>
+				<groupId>be.aca</groupId>
+				<artifactId>service-subsystem</artifactId>
+				<version>${project.version}</version>
+				<type>esa</type>
 			</dependency>
 			<dependency>
-				<groupId>org.apache.sling</groupId>
-				<artifactId>org.apache.sling.installer.provider.file</artifactId>
-				<version>${version.org.apache.sling.installer.provider.file}</version>
+				<groupId>be.aca</groupId>
+				<artifactId>service-user</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.apache.sling</groupId>
-				<artifactId>org.apache.sling.installer.factory.subsystems</artifactId>
-				<version>${version.org.apache.sling.installer.factory.subsystems}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.sling</groupId>
-				<artifactId>org.apache.sling.installer.console</artifactId>
-				<version>${version.org.apache.sling.installer.console}</version>
+				<groupId>be.aca</groupId>
+				<artifactId>service-user-subsystem</artifactId>
+				<version>${project.version}</version>
+				<type>esa</type>
 			</dependency>
 			<dependency>
 				<groupId>org.ops4j.pax.logging</groupId>
@@ -101,45 +88,50 @@
 				<version>${version.commons.logging}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>org.apache.felix.webconsole</artifactId>
-				<version>${version.org.apache.felix.webconsole}</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-fileupload</groupId>
-				<artifactId>commons-fileupload</artifactId>
-				<version>${version.commons-fileupload}</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-io</groupId>
-				<artifactId>commons-io</artifactId>
-				<version>${version.commons-io}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.json</groupId>
-				<artifactId>com.springsource.org.json</artifactId>
-				<version>${version.org.json.com.springsource.org.json}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>org.apache.felix.scr</artifactId>
-				<version>${version.org.apache.felix.scr}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>org.apache.felix.metatype</artifactId>
-				<version>${version.org.apache.felix.metatype}</version>
-				<exclusions>
-					<exclusion>
-						<groupId>org.apache.felix</groupId>
-						<artifactId>org.osgi.core</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.apache.felix</groupId>
-						<artifactId>org.osgi.compendium</artifactId>
-					</exclusion>
-				</exclusions>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.core</artifactId>
+				<version>${version.org.osgi.core}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${version.maven.compiler.plugin}</version>
+				<configuration>
+					<source>${version.jdk}</source>
+					<target>${version.jdk}</target>
+					<compilerVersion>${version.jdk}</compilerVersion>
+					<encoding>${encoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>${version.maven.bundle.plugin}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-Name>${project.name}</Bundle-Name>
+						<Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+						<Import-Package>*</Import-Package>
+					</instructions>
+					<unpackBundle>true</unpackBundle>
+					<obrRepository>NONE</obrRepository>
+				</configuration>
+				<executions>
+					<execution>
+						<id>manifestAfterCompile</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>manifest</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
