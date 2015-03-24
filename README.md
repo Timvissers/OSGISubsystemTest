@@ -41,6 +41,13 @@ Use the shell to install subsystems. E.g.
 	subsystem:start 1
 	subsystem:start 2
 
+# Stuff that works
+
+## Esa's referencing other esa's
+
+If you first install service-subsystem and then service-user-subsystem, then everything works fine.
+We manually removed the inner esa file from service-user-subsystem.
+
 # Stuff that doesn't work
 
 ## Inner esa's

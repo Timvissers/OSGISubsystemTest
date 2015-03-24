@@ -166,18 +166,13 @@
 						<!-- ESA support -->
 						<provision>mvn:org.apache.aries.subsystem/org.apache.aries.subsystem.api/1.0.0@2</provision>
 						<provision>mvn:org.apache.aries.subsystem/org.apache.aries.subsystem.core/1.1.1-SNAPSHOT@2</provision>
+						<provision>mvn:org.apache.aries.subsystem/org.apache.aries.subsystem.obr/1.0.0@2</provision>
 						<provision>mvn:org.apache.aries/org.apache.aries.util/1.1.0@2</provision>
 						<provision>mvn:org.eclipse.equinox/org.eclipse.equinox.region/1.1.0.v20120522-1841@2</provision>
 						<provision>mvn:org.apache.felix/org.apache.felix.resolver/1.0.0@2</provision>
 						<provision>mvn:org.apache.felix/org.apache.felix.coordinator/1.0.0@2</provision>
+						<provision>mvn:org.apache.felix/org.apache.felix.bundlerepository/2.0.2@2</provision>
 						<provision>file:subsystem-gogo-command-1.0.0.jar</provision>
-						<!-- Ensure pax-web-jetty-bundle is started early enough so that webapplications can be discoverded -->
-						<!--<provision>mvn:org.ops4j.pax.web/pax-web-jetty-bundle/${version.org.ops4j.pax.web}@2</provision>-->
-						<!-- jaxb has to be available up front to allow dynamic import -->
-						<!--<provision>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxb-api-2.2/${version.org.apache.servicemix.specs.jaxb-api}@3</provision>-->
-						<!--<provision>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jaxb-impl/${version.org.apache.servicemix.bundles.jaxb-impl}@3</provision>-->
-						<!-- start liquibase early: liquibase-osgi does some classloader magic in its activator. -->
-						<!--<provision>mvn:org.liquibase/liquibase-osgi/${version.org.liquibase.liquibase-osgi}@3</provision>-->
 					</provision>
 				</configuration>
 			</plugin>
