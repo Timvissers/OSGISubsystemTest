@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>be.aca</groupId>
+		<artifactId>osgi-subsystem-support</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<artifactId>service-subsystem</artifactId>
+	<packaging>esa</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>be.aca</groupId>
+			<artifactId>service</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.aries</groupId>
+				<artifactId>esa-maven-plugin</artifactId>
+				<version>1.0.0</version>
+				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<id>esa-package</id>
+						<phase>package</phase>
+						<goals>
+							<goal>esa</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<archiveContent>content</archiveContent>
+					<generateManifest>true</generateManifest>
+					<startOrder>dependencies</startOrder>
+					<instructions>
+						<Subsystem-Type>osgi.subsystem.feature</Subsystem-Type>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>be.aca</groupId>
+		<artifactId>osgi-subsystem-support</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<groupId>be.aca.osgi-subsystem-support</groupId>
+	<artifactId>runner</artifactId>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>provision</module>
+	</modules>
+
+	<properties>
+		<http.port>8080</http.port>
+	</properties>
+
+	<dependencies>
+		<!-- External dependencies -->
+		<!-- pax logging api and all to exclude legacy log frameworks as optional and provided -->
+		<dependency>
+			<groupId>org.ops4j.pax.logging</groupId>
+			<artifactId>pax-logging-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<scope>provided</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<scope>provided</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<artifactId>log4j</artifactId>
+			<groupId>log4j</groupId>
+			<scope>provided</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<artifactId>commons-logging</artifactId>
+			<groupId>commons-logging</groupId>
+			<scope>provided</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<artifactId>com.springsource.org.apache.commons.logging</artifactId>
+			<groupId>org.apache.commons</groupId>
+			<scope>provided</scope>
+			<optional>true</optional>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>${basedir}/config</directory>
+				<includes>
+					<include>**/*.config</include>
+					<include>**/*.properties</include>
+				</includes>
+				<filtering>true</filtering>
+				<targetPath>${basedir}/runner/config</targetPath>
+			</resource>
+			<resource>
+				<directory>${basedir}/config</directory>
+				<excludes>
+					<exclude>**/*.config</exclude>
+					<exclude>**/*.properties</exclude>
+				</excludes>
+				<filtering>false</filtering>
+				<targetPath>${basedir}/runner/config</targetPath>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.4.1</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>runner</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+				<executions>
+					<execution>
+						<id>install-resources</id>
+						<phase>install</phase>
+						<goals>
+							<goal>resources</goal>
+						</goals>
+						<inherited>false</inherited>
+						<configuration>
+							<encoding>UTF-8</encoding>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.ops4j</groupId>
+				<artifactId>maven-pax-plugin</artifactId>
+				<version>1.5</version>
+				<configuration>
+					<deploy>true</deploy>
+					<runner>1.8.5</runner>
+					<provision>
+						<param>--definitionURL=file:${basedir}/provision/definition.xml</param>
+						<!-- runtime pax options -->
+						<!-- loglevel for felix-pax -->
+						<param>--log=debug</param>
+						<!-- explicitly set the workingDirectory to be clear -->
+						<param>--workingDirectory=${basedir}/runner</param>
+						<!-- keepOriginalUrls makes sure that for assemblies nothing is cached
+							and that direct update is possible enables to change a java source file,
+							save it so that eclipse compiles it into classes dir and then just do an
+							update in the felix console with the bundle id of the bundle changed to reflect
+							the change -->
+						<param>--keepOriginalUrls</param>
+						<!-- Sets the start level for those bundles that have not set a specific
+							start level value. -->
+						<param>--bundleStartLevel=4</param>
+						<param>--startLevel=5</param>
+						<!-- Specify additional java packages to be exported by System Bundle. -->
+						<!-- javax.xml.stream;version="1.0.2" is to avoid LinkageErrors, no api is deployed but some require binding on version 1.0 so making jdk export with version -->
+						<param>--systemPackages=javax.xml.stream;version="1.0.2"</param>
+						<param>--bootDelegation=sun.*,com.sun.*</param>
+						<!-- add debug possibility -->
+						<vmOptions>--vmOptions=-Djava.net.preferIPv4Stack=true -Dorg.aspectj.osgi.verbose=true -Dfelix.cm.loglevel=4 -Dfelix.cm.dir=${basedir}/runner/config -Djava.awt.headless=true -Duser.timezone=UTC -Dsling.fileinstall.dir=${basedir}/runner/slingload  -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -XX:MaxPermSize=128m -Xms256m -Xmx256m</vmOptions>
+						<!-- add each development bundle in this project as an assembly url
+							to the exploded classes dir where a correct bundle manifest.mf should be
+							present (generated by bundle maven plugin). Also add the bundle in the exploded-application-bundle's
+							pom file, so that its dependencies are also deployed. -->
+
+						<!-- use this section to override provisioning in pax runner for example:
+							- use @nostart to avoid that bundle fragments are started
+							- use @<level> to enforce a starting order in bundles that need it You must specify the
+							complete maven dependency specification, e.g. mvn:org.slf4j/slf4j-log4j12/1.6.6@nostart@10
+							which does not start the dependency and puts it at level 10 it is not enough
+							to use mvn:org.slf4j/slf4j-log4j12 without version because then pax will
+							install 2 bundles instead of overwriting -->
+						<!-- Ensure the config admin service is started early enough, so the configurations are loaded early: -->
+						<provision>mvn:org.apache.felix/org.apache.felix.configadmin/${version.org.apache.felix.configadmin}@1</provision>
+						<!-- Ensure logging api and service are started early enough, after
+							config loading, so logging is correct: -->
+						<provision>mvn:org.ops4j.pax.logging/pax-logging-api/${version.org.ops4j.pax.logging}@2</provision>
+						<provision>mvn:org.ops4j.pax.logging/pax-logging-service/${version.org.ops4j.pax.logging}@2</provision>
+						<!-- ESA support -->
+						<provision>mvn:org.apache.aries.subsystem/org.apache.aries.subsystem.api/1.0.0@2</provision>
+						<provision>mvn:org.apache.aries.subsystem/org.apache.aries.subsystem.core/1.1.1-SNAPSHOT@2</provision>
+						<provision>mvn:org.apache.aries.subsystem/org.apache.aries.subsystem.obr/1.0.0@2</provision>
+						<provision>mvn:org.apache.aries/org.apache.aries.util/1.1.0@2</provision>
+						<provision>mvn:org.eclipse.equinox/org.eclipse.equinox.region/1.1.0.v20120522-1841@2</provision>
+						<provision>mvn:org.apache.felix/org.apache.felix.resolver/1.0.0@2</provision>
+						<provision>mvn:org.apache.felix/org.apache.felix.coordinator/1.0.0@2</provision>
+						<provision>mvn:org.apache.felix/org.apache.felix.bundlerepository/2.0.2@2</provision>
+						<provision>file:subsystem-gogo-command-1.0.0.jar</provision>
+					</provision>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

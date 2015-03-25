@@ -1,0 +1,31 @@
+<repository lastmodified='20150325103250.723'>
+  <resource id='be.aca.service/0.0.1.SNAPSHOT' symbolicname='be.aca.service' presentationname='service' uri='/D:/dev/tools/repo/be/aca/service/0.0.1-SNAPSHOT/service-0.0.1-SNAPSHOT.jar' version='0.0.1.SNAPSHOT'>
+    <description>OSGi subsystem support</description>
+    <size>4073</size>
+    <capability name='bundle'>
+      <p n='symbolicname' v='be.aca.service'/>
+      <p n='presentationname' v='service'/>
+      <p n='version' t='version' v='0.0.1.SNAPSHOT'/>
+      <p n='manifestversion' v='2'/>
+    </capability>
+    <capability name='package'>
+      <p n='package' v='be.aca.service.api'/>
+      <p n='version' t='version' v='0.0.1.SNAPSHOT'/>
+    </capability>
+    <require name='package' filter='(&amp;(package=be.aca.service.api)(!(version&gt;=1.0.0)))' extend='false' multiple='false' optional='false'>Import package be.aca.service.api;version="[0.0,1)"</require>
+    <require name='package' filter='(&amp;(package=org.osgi.framework)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))' extend='false' multiple='false' optional='false'>Import package org.osgi.framework;version="[1.7,2)"</require>
+  </resource>
+  <resource id='be.aca.service-user/0.0.1.SNAPSHOT' symbolicname='be.aca.service-user' presentationname='service-user' uri='/D:/dev/tools/repo/be/aca/service-user/0.0.1-SNAPSHOT/service-user-0.0.1-SNAPSHOT.jar' version='0.0.1.SNAPSHOT'>
+    <description>OSGi subsystem support</description>
+    <size>5737</size>
+    <capability name='bundle'>
+      <p n='symbolicname' v='be.aca.service-user'/>
+      <p n='presentationname' v='service-user'/>
+      <p n='version' t='version' v='0.0.1.SNAPSHOT'/>
+      <p n='manifestversion' v='2'/>
+    </capability>
+    <require name='package' filter='(&amp;(package=be.aca.service.api)(!(version&gt;=1.0.0)))' extend='false' multiple='false' optional='false'>Import package be.aca.service.api;version="[0.0,1)"</require>
+    <require name='package' filter='(&amp;(package=org.osgi.framework)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))' extend='false' multiple='false' optional='false'>Import package org.osgi.framework;version="[1.7,2)"</require>
+    <require name='package' filter='(&amp;(package=org.osgi.util.tracker)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))' extend='false' multiple='false' optional='false'>Import package org.osgi.util.tracker;version="[1.5,2)"</require>
+  </resource>
+</repository>

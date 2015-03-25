@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<repository increment='1427207769486' name='Untitled' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
+  <resource>
+    <capability namespace='osgi.identity'>
+      <attribute name='osgi.identity' value='be.aca.service'/>
+      <attribute name='type' value='osgi.bundle'/>
+      <attribute name='version' type='Version' value='0.0.1.SNAPSHOT'/>
+    </capability>
+    <capability namespace='osgi.content'>
+      <attribute name='osgi.content' value='fbd09295613211d8f7a853f7aa34a7477a0162314b8a513bd39990533fba60e8'/>
+      <attribute name='url' value='file:///D:/dev/tools/repo/be/aca/service/0.0.1-SNAPSHOT/service-0.0.1-SNAPSHOT.jar'/>
+      <attribute name='size' type='Long' value='4071'/>
+      <attribute name='mime' value='application/vnd.osgi.bundle'/>
+    </capability>
+    <capability namespace='osgi.wiring.bundle'>
+      <attribute name='osgi.wiring.bundle' value='be.aca.service'/>
+      <attribute name='bundle-version' type='Version' value='0.0.1.SNAPSHOT'/>
+    </capability>
+    <capability namespace='osgi.wiring.host'>
+      <attribute name='osgi.wiring.host' value='be.aca.service'/>
+      <attribute name='bundle-version' type='Version' value='0.0.1.SNAPSHOT'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='be.aca.service.api'/>
+      <attribute name='version' type='Version' value='0.0.1.SNAPSHOT'/>
+      <attribute name='bundle-symbolic-name' value='be.aca.service'/>
+      <attribute name='bundle-version' type='Version' value='0.0.1.SNAPSHOT'/>
+    </capability>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=be.aca.service.api)(version&gt;=0.0.0)(!(version&gt;=1.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))'/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace='osgi.identity'>
+      <attribute name='osgi.identity' value='be.aca.service-user'/>
+      <attribute name='type' value='osgi.bundle'/>
+      <attribute name='version' type='Version' value='0.0.1.SNAPSHOT'/>
+    </capability>
+    <capability namespace='osgi.content'>
+      <attribute name='osgi.content' value='ae727c405c6d2d5c53c02314fae6108e4bb08b130c7d6d47b789451002e30f94'/>
+      <attribute name='url' value='file:///D:/dev/tools/repo/be/aca/service-user/0.0.1-SNAPSHOT/service-user-0.0.1-SNAPSHOT.jar'/>
+      <attribute name='size' type='Long' value='5737'/>
+      <attribute name='mime' value='application/vnd.osgi.bundle'/>
+    </capability>
+    <capability namespace='osgi.wiring.bundle'>
+      <attribute name='osgi.wiring.bundle' value='be.aca.service-user'/>
+      <attribute name='bundle-version' type='Version' value='0.0.1.SNAPSHOT'/>
+    </capability>
+    <capability namespace='osgi.wiring.host'>
+      <attribute name='osgi.wiring.host' value='be.aca.service-user'/>
+      <attribute name='bundle-version' type='Version' value='0.0.1.SNAPSHOT'/>
+    </capability>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=be.aca.service.api)(version&gt;=0.0.0)(!(version&gt;=1.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.util.tracker)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))'/>
+    </requirement>
+  </resource>
+</repository>
