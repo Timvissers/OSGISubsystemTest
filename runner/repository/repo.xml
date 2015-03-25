@@ -8,7 +8,7 @@
 		</capability>
 		<capability namespace="osgi.content">
 			<attribute name="osgi.content" value="fbd09295613211d8f7a853f7aa34a7477a0162314b8a513bd39990533fba60e8"/>
-			<attribute name="url" value="file:///D:/dev/tools/repo/be/aca/service/0.0.1-SNAPSHOT/service-0.0.1-SNAPSHOT.jar"/>
+			<attribute name="url" value="file:../service/target/service-0.0.1-SNAPSHOT.jar"/>
 			<attribute name="size" type="Long" value="4071"/>
 			<attribute name="mime" value="application/vnd.osgi.bundle"/>
 		</capability>
@@ -35,7 +35,7 @@
 		</capability>
 		<capability namespace="osgi.content">
 			<attribute name="osgi.content" value="ae727c405c6d2d5c53c02314fae6108e4bb08b130c7d6d47b789451002e30f94"/>
-			<attribute name="url" value="file:///D:/dev/tools/repo/be/aca/service-user/0.0.1-SNAPSHOT/service-user-0.0.1-SNAPSHOT.jar"/>
+			<attribute name="url" value="file:../service-user/target/service-user-0.0.1-SNAPSHOT.jar"/>
 			<attribute name="size" type="Long" value="5737"/>
 			<attribute name="mime" value="application/vnd.osgi.bundle"/>
 		</capability>

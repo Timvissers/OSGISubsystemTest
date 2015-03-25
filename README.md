@@ -39,6 +39,8 @@ To use it, run
 
 	mvn pax:provision
 
+Ignore the error about the equinox coordinator, we're using the felix coordinator.
+
 # Repository support
 
 ## Repository
@@ -63,19 +65,18 @@ repository/index.xml
 
 * like repo.xml, but a bit worse
 
-TODO We would like to get the first one, which follows the spec, to work
-
+TODO We would like to get the first one, which follows the spec, to work.
 Steps to reproduce the not working bundle resolving
 
-	obr:repos add file:///D:/workspace/osgi-subsystem-support/runner/repo.xml <change to your path>
+	obr:repos add file:../repository/repo.xml
 	obr:deploy be.aca.service-user
 
 # Subsystems
 
 Use the shell to install subsystems. E.g.
 
-	subsystem:install file:///D:/workspace/osgi-subsystem-support/service-subsystem/target/service-subsystem-0.0.1-SNAPSHOT.esa
-	subsystem:install file:///D:/workspace/osgi-subsystem-support/service-user-subsystem/target/service-user-subsystem-0.0.1-SNAPSHOT.esa
+	subsystem:install file:../service-subsystem/target/service-subsystem-0.0.1-SNAPSHOT.esa
+	subsystem:install file:../service-user-subsystem/target/service-user-subsystem-0.0.1-SNAPSHOT.esa
 	subsystem:list
 	subsystem:start 1
 	subsystem:start 2

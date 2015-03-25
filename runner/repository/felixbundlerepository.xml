@@ -1,7 +1,7 @@
-<repository lastmodified='20150325103250.723'>
+<repository lastmodified='20150325111228.581'>
   <resource id='be.aca.service/0.0.1.SNAPSHOT' symbolicname='be.aca.service' presentationname='service' uri='/D:/dev/tools/repo/be/aca/service/0.0.1-SNAPSHOT/service-0.0.1-SNAPSHOT.jar' version='0.0.1.SNAPSHOT'>
     <description>OSGi subsystem support</description>
-    <size>4073</size>
+    <size>4072</size>
     <capability name='bundle'>
       <p n='symbolicname' v='be.aca.service'/>
       <p n='presentationname' v='service'/>

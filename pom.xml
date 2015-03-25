@@ -120,7 +120,7 @@
 						<Import-Package>*</Import-Package>
 					</instructions>
 					<unpackBundle>true</unpackBundle>
-					<obrRepository>repository/felixbundlerepository.xml</obrRepository>
+					<obrRepository>runner/repository/felixbundlerepository.xml</obrRepository>
 				</configuration>
 				<executions>
 					<execution>
