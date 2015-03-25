@@ -7,9 +7,9 @@
       <attribute name='version' type='Version' value='0.0.1.SNAPSHOT'/>
     </capability>
     <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='fbd09295613211d8f7a853f7aa34a7477a0162314b8a513bd39990533fba60e8'/>
-      <attribute name='url' value='file:../service/target/service-0.0.1-SNAPSHOT.jar'/>
-      <attribute name='size' type='Long' value='4071'/>
+      <attribute name='osgi.content' value='f11faaf641af122e375595c69b1059845bd9ca9b1e09eeb4d86f3bc7b3577695'/>
+      <attribute name='url' value='file:../../service/target/service-0.0.1-SNAPSHOT.jar'/>
+      <attribute name='size' type='Long' value='4065'/>
       <attribute name='mime' value='application/vnd.osgi.bundle'/>
     </capability>
     <capability namespace='osgi.wiring.bundle'>
@@ -40,9 +40,9 @@
       <attribute name='version' type='Version' value='0.0.1.SNAPSHOT'/>
     </capability>
     <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='ae727c405c6d2d5c53c02314fae6108e4bb08b130c7d6d47b789451002e30f94'/>
-      <attribute name='url' value='file:../service-user/target/service-user-0.0.1-SNAPSHOT.jar'/>
-      <attribute name='size' type='Long' value='5737'/>
+      <attribute name='osgi.content' value='36a1022a428aecfef3ac0ca07d59f0f7aa995076833b122a3554b9a11b438b48'/>
+      <attribute name='url' value='file:../../service-user/target/service-user-0.0.1-SNAPSHOT.jar'/>
+      <attribute name='size' type='Long' value='5731'/>
       <attribute name='mime' value='application/vnd.osgi.bundle'/>
     </capability>
     <capability namespace='osgi.wiring.bundle'>
