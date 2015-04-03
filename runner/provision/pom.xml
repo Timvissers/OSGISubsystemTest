@@ -19,19 +19,39 @@
 			<artifactId>org.apache.aries.subsystem.api</artifactId>
 			<version>1.0.0</version>
 			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>org.apache.aries.util</artifactId>
+					<groupId>org.apache.aries</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.aries.subsystem</groupId>
 			<artifactId>org.apache.aries.subsystem.core</artifactId>
 			<version>1.1.1-SNAPSHOT</version>
 			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>org.eclipse.equinox.coordinator</artifactId> <!-- using the felix coordinator -->
+					<groupId>org.eclipse.equinox</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.aries.application.utils</artifactId> <!-- not needed if no aries blueprint services are to be resolved -->
+					<groupId>org.apache.aries.application</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.aries.application.api</artifactId>  <!-- not needed if no aries blueprint services are to be resolved -->
+					<groupId>org.apache.aries.application</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.aries.subsystem</groupId>
-			<artifactId>org.apache.aries.subsystem.obr</artifactId>
-			<version>1.0.0</version>
-			<scope>provided</scope>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.apache.aries.subsystem</groupId>-->
+			<!--<artifactId>org.apache.aries.subsystem.obr</artifactId>-->
+			<!--<version>1.0.0</version>-->
+			<!--<scope>provided</scope>-->
+		<!--</dependency>-->
 		<dependency>
 			<groupId>org.apache.aries</groupId>
 			<artifactId>org.apache.aries.util</artifactId>
@@ -56,12 +76,12 @@
 			<version>1.0.0</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.felix</groupId>
-			<artifactId>org.apache.felix.bundlerepository</artifactId>
-			<version>2.0.2</version>
-			<scope>provided</scope>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.apache.felix</groupId>-->
+			<!--<artifactId>org.apache.felix.bundlerepository</artifactId>-->
+			<!--<version>2.0.2</version>-->
+			<!--<scope>provided</scope>-->
+		<!--</dependency>-->
 	</dependencies>
 
 </project>
