@@ -1,7 +1,7 @@
-<repository lastmodified='20150325113706.416'>
-  <resource id='be.aca.service/0.0.1.SNAPSHOT' symbolicname='be.aca.service' presentationname='service' uri='file:../../service/target/service-0.0.1-SNAPSHOT.jar' version='0.0.1.SNAPSHOT'>
+<repository lastmodified='20150403124817.373'>
+  <resource id='be.aca.service/0.0.1.SNAPSHOT' symbolicname='be.aca.service' presentationname='service' uri='/D:/isabel/workspace/maven/be/aca/service/0.0.1-SNAPSHOT/service-0.0.1-SNAPSHOT.jar' version='0.0.1.SNAPSHOT'>
     <description>OSGi subsystem support</description>
-    <size>4064</size>
+    <size>4089</size>
     <capability name='bundle'>
       <p n='symbolicname' v='be.aca.service'/>
       <p n='presentationname' v='service'/>
@@ -15,9 +15,9 @@
     <require name='package' filter='(&amp;(package=be.aca.service.api)(!(version&gt;=1.0.0)))' extend='false' multiple='false' optional='false'>Import package be.aca.service.api;version="[0.0,1)"</require>
     <require name='package' filter='(&amp;(package=org.osgi.framework)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))' extend='false' multiple='false' optional='false'>Import package org.osgi.framework;version="[1.7,2)"</require>
   </resource>
-  <resource id='be.aca.service-user/0.0.1.SNAPSHOT' symbolicname='be.aca.service-user' presentationname='service-user' uri='file:../../service-user/target/service-user-0.0.1-SNAPSHOT.jar' version='0.0.1.SNAPSHOT'>
+  <resource id='be.aca.service-user/0.0.1.SNAPSHOT' symbolicname='be.aca.service-user' presentationname='service-user' uri='/D:/isabel/workspace/maven/be/aca/service-user/0.0.1-SNAPSHOT/service-user-0.0.1-SNAPSHOT.jar' version='0.0.1.SNAPSHOT'>
     <description>OSGi subsystem support</description>
-    <size>5731</size>
+    <size>5756</size>
     <capability name='bundle'>
       <p n='symbolicname' v='be.aca.service-user'/>
       <p n='presentationname' v='service-user'/>
